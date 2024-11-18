@@ -1,4 +1,4 @@
-﻿package com.lautarobravo.api_gateway;
+package com.lautarobravo.api_gateway;
 
 import org.springframework.cloud.gateway.server.mvc.filter.CircuitBreakerFilterFunctions;
 import org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions;
