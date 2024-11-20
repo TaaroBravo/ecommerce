@@ -1,4 +1,4 @@
-﻿package com.taarobravo.microservices.order.config;
+package com.taarobravo.microservices.order.config;
 
 import com.taarobravo.microservices.order.client.InventoryClient;
 import org.springframework.beans.factory.annotation.Value;
