@@ -32,7 +32,7 @@ class OrderServiceApplicationTests {
 		mySQLContainer.start();
 	}
 
-	//@Test
+	@Test
 	void shouldPlaceOrder() {
 		String requestBody = """
 				{
