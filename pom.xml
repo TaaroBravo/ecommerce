@@ -36,10 +36,10 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>taarobravo/new-${project.artifactId}</name>
+                        <name>taarobravo/ecommerce-${project.artifactId}</name>
                         <publish>true</publish>
                     </image>
-                    <docker>
+                    <docker><host>//./pipe/dockerDesktopLinuxEngine</host>
                         <publishRegistry>
                             <username>taarobravo</username>
                             <password>${dockerPassword}</password>

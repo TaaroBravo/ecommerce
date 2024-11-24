@@ -1,4 +1,4 @@
-﻿package com.lautarobravo.inventory_service.config;
+package com.lautarobravo.inventory_service.config;
 
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.aop.ObservedAspect;

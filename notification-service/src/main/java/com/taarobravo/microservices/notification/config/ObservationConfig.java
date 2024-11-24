@@ -1,4 +1,4 @@
-﻿package com.taarobravo.microservices.notification.config;
+package com.taarobravo.microservices.notification.config;
 
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.aop.ObservedAspect;
