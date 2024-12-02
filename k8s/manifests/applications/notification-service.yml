@@ -1,26 +1,31 @@
 ﻿apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: inventory-service
+  name: notification-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: inventory-service
+      app: notification-service
   template:
     metadata:
       labels:
-        app: inventory-service
+        app: notification-service
     spec:
       containers:
-        - name: inventory-service
-          image: taarobravo/ecommerce-inventory-service:latest
+        - name: notification-service
+          image: taarobravo/ecommerce-notification-service:latest
           env:
-            - name: SPRING_DATASOURCE_URL
+            - name: SPRING_KAFKA_BOOTSTRAP-SERVERS
               valueFrom:
                 configMapKeyRef:
-                  key: SPRING_DATASOURCE_URL
-                  name: inventory-service-config
+                  key: SPRING_KAFKA_BOOTSTRAP-SERVERS
+                  name: common-config
+            - name: SPRING_KAFKA_CONSUMER_PROPERTIES_SCHEMA_REGISTRY_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: SPRING_KAFKA_CONSUMER_PROPERTIES_SCHEMA_REGISTRY_URL
+                  name: notification-service-config
             - name: LOKI_URL
               valueFrom:
                 configMapKeyRef:
@@ -35,18 +40,18 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: inventory-service
+  name: notification-service
 spec:
   selector:
-    app: inventory-service
+    app: notification-service
   ports:
     - protocol: TCP
-      port: 8082
-      targetPort: 8082
+      port: 8083
+      targetPort: 8083
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: inventory-service-config
+  name: notification-service-config
 data:
-  SPRING_DATASOURCE_URL: "jdbc:mysql://mysql.default.svc.cluster.local:3306/inventory_service"
+  SPRING_KAFKA_CONSUMER_PROPERTIES_SCHEMA_REGISTRY_URL: "http://schema-registry.default.svc.cluster.local:8081"
